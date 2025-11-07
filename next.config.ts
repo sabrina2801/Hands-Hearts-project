@@ -1,8 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+// Указываем путь к конфигурации i18n
+const withNextIntl = createNextIntlPlugin('./src/I18n/request.ts');
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  // Ваши дополнительные настройки, если есть
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
