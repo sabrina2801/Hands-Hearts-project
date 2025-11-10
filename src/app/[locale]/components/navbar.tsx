@@ -17,16 +17,21 @@ const t = useTranslations("HomePage")
 
 
 return (
-    <div className="dark:bg-gray-950 z-20 shadow px-3 py-3 h-[80px] bg-[#fcf0fee8]  w-[100%] justify-around flex items-center fixed">
+    <div className="dark:bg-gray-950 z-20 border-b border-[#eeeded] px-3 py-3 h-[80px] bg-[#ffffff]  w-[100%] justify-around flex items-center fixed">
 <Image src="/images/Copilot_20251107_234223.png" alt="logo" className="w-[50px] h-[50px]" width={70} height={60}/>
 <Link href={'/'}>
       <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a1")}</b></button>
 </Link>
-      <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a2")}</b></button>
-      <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a3")}</b></button>
+      
+      <Link href={'/page3'}>
       <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a4")}</b></button>
+      </Link>
+      <Link href={'/page4'}>
       <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a5")}</b></button>
-      <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a6")}</b></button>
+      </Link>
+      <Link href={'/about'}>
+      <button className="dark:text-white hover:text-purple-950 text-[#6d536b]"><b>{t("a2")}</b></button>
+      </Link>
 
       
 <div className="flex items-center gap-[30px]">

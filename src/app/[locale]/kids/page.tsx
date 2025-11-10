@@ -65,7 +65,7 @@ export default function KidsPage() {
     async function fetchUsers() {
       try {
         const res = await axios.get("/db.json")
-        setData(res.data.cat)
+        setData(res.data.kids)
       } catch (error) {
         console.error(error)
       }

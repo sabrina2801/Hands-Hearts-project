@@ -46,6 +46,15 @@ export default async function RootLayout({ children, params }: Props) {
                  <li>
                   <Link href="/cat" className="hover:text-gray-300"></Link>
                 </li>
+                 <li>
+                  <Link href="/about" className="hover:text-gray-300"></Link>
+                </li>
+                <li>
+                  <Link href="/page3" className="hover:text-gray-300"></Link>
+                </li>
+                <li>
+                  <Link href="/kids" className="hover:text-gray-300"></Link>
+                </li>
               </ul>
             </nav>
      {children}

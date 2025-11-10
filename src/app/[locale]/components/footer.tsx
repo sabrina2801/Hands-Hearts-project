@@ -6,7 +6,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp"
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b bg-[#fff9f3]  dark:bg-gray-950 dark:text-white py-16 px-8">
+    <footer className="bg-gradient-to-b from-orange-50 to-blue-50 dark:from-[#000013] dark:to-gray-700 dark:text-white py-16 px-8">
       <div className="max-w-7xl mx-auto pt-[50px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
     
@@ -86,7 +86,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="tel:+992" className=" transition-colors duration-200 text-sm">
-                  +992 *** ** **
+                  +992 000 00 00
                 </a>
               </li>
             </ul>
