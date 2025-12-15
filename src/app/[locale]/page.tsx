@@ -212,26 +212,7 @@ export default function HomePage() {
      
           </SwiperSlide>
 
-          {/* Slide 5 */}
-          <SwiperSlide>
-            <Link href="/Volunteering" className="block h-full">
-              <div className="relative w-[280px] sm:w-[350px] md:max-w-[400px] h-64 sm:h-80 md:h-96 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500 group cursor-pointer">
-                <Image
-                  src="/images/ф2.jpg"
-                  alt="Volunteering"
-                  width={400}
-                  height={450}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:brightness-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold leading-snug drop-shadow-lg transition-opacity duration-700 group-hover:opacity-100">
-                    {t("a6")}
-                  </h3>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
+        
         </Swiper>
       </div>
 
@@ -251,6 +232,7 @@ export default function HomePage() {
             )
           })}
         </div>
+
         <div className="flex flex-col sm:flex-row flex-wrap sm:flex-nowrap justify-center sm:justify-around gap-3 sm:gap-0 mt-[30px] font-bold dark:text-white text-sm sm:text-base md:text-[17px] text-center">
           <h1 className="sm:ml-[50px] md:ml-[60px]">{t("a42")}</h1>
           <h1 className="sm:ml-[50px] md:ml-[150px]">{t("a43")}</h1>
@@ -258,6 +240,7 @@ export default function HomePage() {
           <h1 className="sm:ml-[50px] md:ml-[100px]">{t("a45")}</h1>
           <h1 className="sm:ml-[50px] md:ml-[70px]">{t("a46")}</h1>
         </div>
+        
       </div>
     </div>
   )

@@ -29,31 +29,31 @@ export default async function RootLayout({ children, params }: Props) {
          <nav>
               <ul className="flex gap-6">
                 <li>
-                  <Link href="/" className="hover:text-gray-300"></Link>
+                  <Link href="/" ></Link>
                 </li>
 
                 
 
                 <li>
-                  <Link href="/deti" className="hover:text-gray-300"></Link>
+                  <Link href="/deti" ></Link>
                 </li>
                  <li>
-                  <Link href="/Volunteering" className="hover:text-gray-300"></Link>
+                  <Link href="/Volunteering" ></Link>
                 </li>
                 <li>
-                  <Link href="/grandparents" className="hover:text-gray-300"></Link>
+                  <Link href="/grandparents" ></Link>
                 </li>
                  <li>
-                  <Link href="/cat" className="hover:text-gray-300"></Link>
+                  <Link href="/cat" ></Link>
                 </li>
                  <li>
-                  <Link href="/about" className="hover:text-gray-300"></Link>
+                  <Link href="/about" ></Link>
                 </li>
                 <li>
-                  <Link href="/page3" className="hover:text-gray-300"></Link>
+                  <Link href="/page3" ></Link>
                 </li>
                 <li>
-                  <Link href="/kids" className="hover:text-gray-300"></Link>
+                  <Link href="/kids" ></Link>
                 </li>
               </ul>
             </nav>

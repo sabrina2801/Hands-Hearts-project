@@ -16,6 +16,12 @@ import Dialog from "@mui/material/Dialog"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 
+interface Comment {
+  avatar: string
+  nikname: string
+  text: string
+}
+
 interface User {
   id: number
   name: string
@@ -23,9 +29,9 @@ interface User {
   adres?: string
   avatar?: string
   nikname?: string
-  coment?: string
   category?: string
   program?: string
+  comments?: Comment[]
 }
 
 export default function KidsPage() {
@@ -100,7 +106,9 @@ export default function KidsPage() {
         <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={() => setMobileMenuOpen(false)} />
       )}
       <div
-        className={`fixed md:hidden left-0 top-0 h-screen w-[80%] bg-white z-50 transform transition-transform duration-300 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed md:hidden left-0 top-0 h-screen w-[80%] bg-white z-50 transform transition-transform duration-300 ${
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <div className="p-4">
           <button onClick={() => setMobileMenuOpen(false)} className="mb-4">
@@ -207,61 +215,77 @@ export default function KidsPage() {
             </MenuItem>
           </Menu>
 
-          <Dialog
-            open={dialogOpen}
-            onClose={handleCloseDialog}
-            aria-labelledby="comment-dialog-title"
-            aria-describedby="comment-dialog-description"
-            maxWidth="md"
-            fullWidth
-          >
-            {selectedUser && (
-              <div className="flex flex-col md:flex-row">
-                <img
-                  className="w-full md:w-[500px] h-[300px] md:h-[400px] object-cover"
-                  src={selectedUser.img || "/placeholder.svg"}
-                  alt={selectedUser.name}
-                />
-                <div className="w-full md:w-auto">
-                  <h2 className="text-[16px] text-center pt-[10px] font-semibold mb-4">{selectedUser.name}</h2>
-                  <div className="w-full md:w-[400px] h-[1px] bg-gray-300"></div>
-                  <div className="flex items-center gap-[20px] ml-[20px] md:ml-[30px] mt-[20px] flex-wrap">
-                    <img
-                      className="w-[40px] h-[40px] rounded-[50%]"
-                      src={selectedUser.avatar || "/placeholder.svg"}
-                      alt=""
-                    />
-                    <h1 className="text-sm md:text-base">{selectedUser.nikname} :</h1>
-                    <h1 className="text-gray-700 text-sm md:text-base">{selectedUser.coment}</h1>
-                  </div>
-                  <div className="flex items-center mt-[15px] px-[20px] md:px-0 justify-between md:justify-start">
-                    <button className="text-gray-500 text-sm md:text-base">посмотреть перевод</button>
-                    <FavoriteBorderIcon
-                      sx={{
-                        color: "gray",
-                        fontSize: "20px",
-                        marginLeft: { xs: "0px", md: "270px" },
-                        marginTop: "10px",
-                      }}
-                    />
-                  </div>
-                  <input
-                    className="border-t border-gray-400 w-full md:w-[510px] mt-[30px] md:mt-[170px] h-[48px] pl-[20px]"
-                    placeholder="написать коментарий"
-                    type="text"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        const value = (e.target as HTMLInputElement).value
-                        if (selectedUser) selectedUser.coment = value
-                        ;(e.target as HTMLInputElement).value = ""
-                        setData([...data])
-                      }
-                    }}
-                  />
-                </div>
+          <Dialog open={dialogOpen} onClose={handleCloseDialog} maxWidth="md" fullWidth>
+  {selectedUser && (
+    <div className="flex flex-col md:flex-row">
+      {/* Фото пользователя */}
+      <img
+        className="w-full md:w-[500px] h-[300px] md:h-[400px] object-cover rounded-lg"
+        src={selectedUser.img || "/placeholder.svg"}
+        alt={selectedUser.name}
+      />
+
+      <div className="w-full md:w-auto p-4 md:p-6">
+        <h2 className="text-lg text-center font-semibold mb-4">{selectedUser.name}</h2>
+
+        <div className="w-full md:w-[400px] h-[1px] bg-gray-300 mb-4"></div>
+
+        {/* Комментарии */}
+        <div className="space-y-4    max-h-[300px] md:max-h-[350px] overflow-y-auto pr-2">
+          {selectedUser.comments?.map((c, index) => (
+            <div
+              key={index}
+              className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl shadow-sm"
+            >
+              <img
+                className="w-10 h-10 rounded-full object-cover border border-gray-200"
+                src={c.avatar}
+                alt={c.nikname}
+              />
+              <div>
+                <h1 className="text-sm md:text-base font-semibold">{c.nikname}</h1>
+                <p className="text-gray-700 text-sm md:text-base">{c.text}</p>
               </div>
-            )}
-          </Dialog>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between mt-4">
+          <button className="text-gray-500 text-sm md:text-base hover:text-blue-500 transition">
+            посмотреть перевод
+          </button>
+          <FavoriteBorderIcon sx={{ color: "gray", fontSize: 22 }} />
+        </div>
+
+        {/* Поле ввода комментария */}
+        <input
+          className="border-t border-gray-300 w-full md:w-[510px] mt-4 h-12 pl-4 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400"
+          placeholder="Написать комментарий..."
+          type="text"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              const value = (e.target as HTMLInputElement).value.trim();
+              if (!value || !selectedUser) return;
+
+              selectedUser.comments = [
+                ...(selectedUser.comments || []),
+                {
+                  avatar: "/images/Без названия.jpg",
+                  nikname: "User",
+                  text: value,
+                },
+              ];
+
+              (e.target as HTMLInputElement).value = "";
+              setData([...data]);
+            }
+          }}
+        />
+      </div>
+    </div>
+  )}
+</Dialog>
+
         </div>
       </div>
     </div>
